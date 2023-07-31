@@ -227,18 +227,18 @@ class _SkinLesionScreenState extends State<SkinLesionScreen> {
   }
 
   Float32List predict(Uint8List input) {
-  if (_interpreter == null) {
-    throw Exception('Model not loaded yet.');
-  }
+    if (_interpreter == null) {
+      throw Exception('Model not loaded yet.');
+    }
 
-  final output = List<List<double>>.filled(1, List<double>.filled(7, 0.0));
-  _interpreter!.run(input, output);
+    final output = List<List<double>>.filled(1, List<double>.filled(7, 0.0));
+    _interpreter!.run(input, output);
 
-  // Extract the first (and only) element of the 2D list, then convert it to a Float32List
-  final List<double> probabilities = output[0];
-  final Float32List result = Float32List.fromList(probabilities);
+    // Extract the first (and only) element of the 2D list, then convert it to a Float32List
+    final List<double> probabilities = output[0];
+    final Float32List result = Float32List.fromList(probabilities);
 
-  return result;
+    return result;
   }
 
   @override
@@ -294,4 +294,15 @@ class _SkinLesionScreenState extends State<SkinLesionScreen> {
       ),
     );
   }
+}
+
+class PreventionTipsScreen extends StatefulWidget {
+  const PreventionTipsScreen({super.key});
+
+  @override
+  _PreventionTipsScreenState createState() => _PreventionTipsScreenState();
+}
+
+class _PreventionTipsScreenState extends State<PreventionTipsScreen> {
+  
 }
