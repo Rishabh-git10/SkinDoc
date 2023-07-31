@@ -74,3 +74,14 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+class SkinLesionScreen extends StatefulWidget {
+  const SkinLesionScreen({super.key});
+
+  @override
+  _SkinLesionScreenState createState() => _SkinLesionScreenState();
+}
+
+class _SkinLesionScreenState extends State<SkinLesionScreen> {
+  
+}
