@@ -331,4 +331,22 @@ class _PreventionTipsScreenState extends State<PreventionTipsScreen> {
       _tip = tip;
     });
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Skin Cancer Prevention Tips'),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+      ),
+      body: Center(
+        child: Text(
+          _tip,
+          style: const TextStyle(fontSize: 24),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
 }
