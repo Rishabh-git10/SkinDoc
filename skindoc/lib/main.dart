@@ -100,9 +100,6 @@ class _SkinLesionScreenState extends State<SkinLesionScreen> {
   void loadModel() async {
     try {
       // Load the model from assets
-      final interpreter =
-          await tfl.Interpreter.fromAsset('assets/model.tflite');
-      final interpreterOptions = tfl.InterpreterOptions();
       _interpreter = await tfl.Interpreter.fromAsset('assets/model.tflite');
     } catch (e) {
       print('Error loading model: $e');
@@ -212,7 +209,6 @@ class _SkinLesionScreenState extends State<SkinLesionScreen> {
     for (int y = 0; y < 224; y++) {
       for (int x = 0; x < 224; x++) {
         final img.Color pixel = resizedImage.getPixel(x, y);
-        final num alpha = pixel.a;
         final num red = pixel.r;
         final num green = pixel.g;
         final num blue = pixel.b;
