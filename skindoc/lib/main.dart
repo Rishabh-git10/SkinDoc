@@ -304,5 +304,31 @@ class PreventionTipsScreen extends StatefulWidget {
 }
 
 class _PreventionTipsScreenState extends State<PreventionTipsScreen> {
-  
+  String _tip = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _getRandomTip();
+  }
+
+  void _getRandomTip() async {
+    // Get random skin cancer prevention tips
+    // Hard coded for now
+    var tips = [
+      'GET ROUTINE SKIN EXAMS',
+      'USE SUNSCREENS SPF 30 OR GREATER (BROAD SPECTRUM)',
+      'WEAR SUN PROTECTIVE CLOTHING',
+      'AVOID THE SUN AND TANNING BEDS',
+      'USE ANTIOXIDANT SERUMS'
+    ];
+
+    // Choose a random tip
+    var random = Random();
+    var tip = tips[random.nextInt(tips.length)];
+
+    setState(() {
+      _tip = tip;
+    });
+  }
 }
