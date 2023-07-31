@@ -141,5 +141,90 @@ class _SkinLesionScreenState extends State<SkinLesionScreen> {
     );
   }
 
+  Future getImage(ImageSource img) async {
+    final pickedFile = await picker.pickImage(source: img);
+    XFile? xfilePick = pickedFile;
+    setState(() {
+      if (xfilePick != null) {
+        _image = File(pickedFile!.path);
+
+        // Process the image and make predictions
+        final input = preprocessImage(_image!);
+        final Float32List prediction = predict(input);
+
+        final classLabels = {
+          0: 'bkl',
+          1: 'nv',
+          2: 'df',
+          3: 'mel',
+          4: 'vasc',
+          5: 'bcc',
+          6: 'akiec'
+        };
+        // Find the class label with the highest probability using reduce.
+        final int predictedClassIdx =
+            prediction.indexOf(prediction.reduce((a, b) => a > b ? a : b));
+        final String? predictedClassLabel = classLabels[predictedClassIdx];
+
+        // Get the description of the predicted class
+        final classDescriptions = {
+          'bkl': 'Benign Keratosis-like Lesions',
+          'nv': 'Melanocytic Nevi (Moles)',
+          'df': 'Dermatofibroma',
+          'mel': 'Melanoma',
+          'vasc': 'Vascular Skin Lesions',
+          'bcc': 'Basal Cell Carcinoma',
+          'akiec': 'Actinic Keratoses and Intraepidermal Carcinoma'
+        };
+        final String? predictedClassDescription =
+            classDescriptions[predictedClassLabel];
+
+        // Check if skin cancer is positive or negative
+        final bool skinCancerPositive =
+            ['mel', 'vasc', 'bcc', 'akiec'].contains(predictedClassLabel);
+
+        // Display the results
+        print("Prediction: $predictedClassLabel");
+        print("Description: $predictedClassDescription");
+        print("Probabilities: $prediction");
+        print("Skin cancer positive: $skinCancerPositive");
+
+        setState(() {
+          _predictedClassLabel = predictedClassLabel;
+          _predictedClassDescription = predictedClassDescription;
+          _prediction = prediction;
+          _skinCancerPositive = skinCancerPositive;
+        });
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Nothing is selected')));
+      }
+    });
+  }
+
+  Uint8List preprocessImage(File file) {
+    final img.Image inputImage = img.decodeImage(file.readAsBytesSync())!;
+    final img.Image resizedImage =
+        img.copyResize(inputImage, width: 224, height: 224);
+
+    final Float32List input = Float32List(224 * 224 * 3);
+    int pixelIndex = 0;
+    for (int y = 0; y < 224; y++) {
+      for (int x = 0; x < 224; x++) {
+        final img.Color pixel = resizedImage.getPixel(x, y);
+        final num alpha = pixel.a;
+        final num red = pixel.r;
+        final num green = pixel.g;
+        final num blue = pixel.b;
+        input[pixelIndex] = (red - 127.5) / 127.5;
+        input[pixelIndex + 1] = (green - 127.5) / 127.5;
+        input[pixelIndex + 2] = (blue - 127.5) / 127.5;
+        pixelIndex += 3;
+      }
+    }
+
+    return input.buffer.asUint8List();
+  }
+
   
 }
