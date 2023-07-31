@@ -38,6 +38,37 @@ Implemented a simple UI design, with a logo, and three buttons:
     2. Skin Cancer Tips
     3. Exit
 
+![Home Screen](screenshots/homescreen.png)
+
+### Check Skin Lesion Screen
+
+A single button to upload the image (whether it be clicking a picture or uploading from gallery) you want to check.
+
+![Check Lesion Screen Before Uploading Image](screenshots/checkskinlesion.png)
+
+### Result after Uploading Image
+
+Results displays the classification of the Skin Lesion, as well as shows if it could be a Skin Cancer, with color coding :
+
+    Green : Negative
+    Red : Positive
+
+![Result](screenshots/result.png)
+
+### Skin Cancer Tips Screen
+
+Provides a random tip to help safeguard yourself from getting Skin Cancer.
+
+![Skin Cancer Tips Screen](screenshots/skincancertips.png)
+
+## Packages Used
+
+[tflite_flutter](https://pub.dev/packages/tflite_flutter)
+
+[Image_Picker](https://pub.dev/packages/image_picker)
+
+[Image](https://pub.dev/packages/image)
+
  ## How to use the app
 
 Download the SkinDoc.apk file from the repository and use directly.
@@ -76,6 +107,14 @@ For contribution to the project, follow these instructions:
 
 [![My Skills](https://skillicons.dev/icons?i=python,dart,flutter&theme=light)](https://skillicons.dev)
 
+## References
+
+1. [HAM10000 Dataset from Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/DBW86T)
+
+2. [Flutter Get Started Page](https://docs.flutter.dev/get-started/install)
+
+3. [Skill Icons](https://github.com/tandpfun/skill-icons)
 
 
 
+Developed by Rishabh Dewangan
