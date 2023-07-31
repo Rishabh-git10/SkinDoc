@@ -83,5 +83,13 @@ class SkinLesionScreen extends StatefulWidget {
 }
 
 class _SkinLesionScreenState extends State<SkinLesionScreen> {
+  final picker = ImagePicker();
+  File? _image;
+  tfl.Interpreter? _interpreter;
+  bool _skinCancerPositive = false;
+  String? _predictedClassLabel;
+  String? _predictedClassDescription;
+  Float32List? _prediction;
+
   
 }
