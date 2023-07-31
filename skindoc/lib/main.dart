@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ElevatedButton(
             onPressed: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const SkinLesionPage()),
+              MaterialPageRoute(builder: (context) => const SkinLesionScreen()),
             ),
             child: const Text('Check Skin Lesion'),
           ),
@@ -241,4 +241,57 @@ class _SkinLesionScreenState extends State<SkinLesionScreen> {
   return result;
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Check Skin Lesion"),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          ElevatedButton(
+            onPressed: () {
+              _showPicker(context: context);
+            },
+            child: const Text('Upload a picture'),
+          ),
+          const SizedBox(height: 20),
+          SizedBox(
+            height: 200.0,
+            width: 300.0,
+            child: _image == null
+                ? const Center(child: Text('Sorry nothing selected!!'))
+                : Stack(
+                    children: [
+                      Image.file(_image!),
+                      if (_prediction != null)
+                        Positioned(
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          child: Container(
+                            color: _skinCancerPositive
+                                ? Colors.red.withOpacity(0.7)
+                                : Colors.green.withOpacity(0.7),
+                            padding: const EdgeInsets.all(8),
+                            child: Text(
+                              "Prediction: $_predictedClassLabel\nDescription: $_predictedClassDescription\nSkin cancer positive: $_skinCancerPositive",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+          ),
+        ],
+      ),
+    );
+  }
 }
