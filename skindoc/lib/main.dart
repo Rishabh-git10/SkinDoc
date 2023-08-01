@@ -30,7 +30,7 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -80,7 +80,7 @@ class SkinLesionScreen extends StatefulWidget {
   const SkinLesionScreen({super.key});
 
   @override
-  _SkinLesionScreenState createState() => _SkinLesionScreenState();
+  State<SkinLesionScreen> createState() => _SkinLesionScreenState();
 }
 
 class _SkinLesionScreenState extends State<SkinLesionScreen> {
@@ -302,7 +302,7 @@ class PreventionTipsScreen extends StatefulWidget {
   const PreventionTipsScreen({super.key});
 
   @override
-  _PreventionTipsScreenState createState() => _PreventionTipsScreenState();
+  State<PreventionTipsScreen> createState() => _PreventionTipsScreenState();
 }
 
 class _PreventionTipsScreenState extends State<PreventionTipsScreen> {
