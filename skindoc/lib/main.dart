@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 import 'package:image/image.dart' as img;
+import 'package:logger/logger.dart';
 
 void main() => runApp(const MyApp());
 
@@ -91,6 +92,8 @@ class _SkinLesionScreenState extends State<SkinLesionScreen> {
   String? _predictedClassDescription;
   Float32List? _prediction;
 
+  var logger = Logger();
+
   @override
   void initState() {
     super.initState();
@@ -102,7 +105,7 @@ class _SkinLesionScreenState extends State<SkinLesionScreen> {
       // Load the model from assets
       _interpreter = await tfl.Interpreter.fromAsset('assets/model.tflite');
     } catch (e) {
-      print('Error loading model: $e');
+      logger.e('Error loading model: $e');
     }
   }
 
@@ -181,10 +184,10 @@ class _SkinLesionScreenState extends State<SkinLesionScreen> {
             ['mel', 'vasc', 'bcc', 'akiec'].contains(predictedClassLabel);
 
         // Display the results
-        print("Prediction: $predictedClassLabel");
-        print("Description: $predictedClassDescription");
-        print("Probabilities: $prediction");
-        print("Skin cancer positive: $skinCancerPositive");
+        logger.d("Prediction: $predictedClassLabel");
+        logger.d("Description: $predictedClassDescription");
+        logger.d("Probabilities: $prediction");
+        logger.d("Skin cancer positive: $skinCancerPositive");
 
         setState(() {
           _predictedClassLabel = predictedClassLabel;
