@@ -38,13 +38,13 @@ Implemented a simple UI design, with a logo, and three buttons:
     2. Skin Cancer Tips
     3. Exit
 
-![Home Screen](screenshots/homescreen.png)
+![Home Screen](.\screenshots\homescreen.png)
 
 ### Check Skin Lesion Screen
 
 A single button to upload the image (whether it be clicking a picture or uploading from gallery) you want to check.
 
-![Check Lesion Screen Before Uploading Image](screenshots/checkskinlesion.png)
+![Check Lesion Screen Before Uploading Image](.\screenshots\checkskinlesion.png)
 
 ### Result after Uploading Image
 
@@ -53,13 +53,13 @@ Results displays the classification of the Skin Lesion, as well as shows if it c
     Green : Negative
     Red : Positive
 
-![Result](screenshots/result.png)
+![Result](.\screenshots\result.png)
 
 ### Skin Cancer Tips Screen
 
 Provides a random tip to help safeguard yourself from getting Skin Cancer.
 
-![Skin Cancer Tips Screen](screenshots/skincancertips.png)
+![Skin Cancer Tips Screen](.\screenshots\skincancertips.png)
 
 ## Packages Used
 
@@ -117,4 +117,4 @@ For contribution to the project, follow these instructions:
 
 
 
-Developed by Rishabh Dewangan
+Developed by <b>Rishabh Dewangan</b>
