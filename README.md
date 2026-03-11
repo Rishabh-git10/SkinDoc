@@ -30,36 +30,41 @@ SkinDoc also provides random tips, to prevent from Skin Cancer, although it is h
 
 ## Features and Interfaces
 
+| Home Screen | Check Skin Lesion Screen | Result after Uploading Image | Skin Cancer Tips Screen |
+|-------------|--------------------------|------------------------------|-------------------------|
+| ![Home Screen](./screenshots/homescreen.png) | ![Check Lesion Screen Before Uploading Image](./screenshots/checkskinlesion.png) | ![Result](./screenshots/result.png) | ![Skin Cancer Tips Screen](./screenshots/skincancertips.png) |
+
+<style>
+    img {
+        height: 200px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
 ### Home Screen
 
 Implemented a simple UI design, with a logo, and three buttons:
 
-    1. Check Skin Lesion
-    2. Skin Cancer Tips
-    3. Exit
-
-![Home Screen](./screenshots/homescreen.png)
+1. Check Skin Lesion
+2. Skin Cancer Tips
+3. Exit
 
 ### Check Skin Lesion Screen
 
 A single button to upload the image (whether it be clicking a picture or uploading from gallery) you want to check.
 
-![Check Lesion Screen Before Uploading Image](./screenshots/checkskinlesion.png)
-
 ### Result after Uploading Image
 
-Results displays the classification of the Skin Lesion, as well as shows if it could be a Skin Cancer, with color coding :
+Results display the classification of the Skin Lesion, as well as show if it could be Skin Cancer, with color coding:
 
-    Green : Negative
-    Red : Positive
-
-![Result](./screenshots/result.png)
+- Green: Negative
+- Red: Positive
 
 ### Skin Cancer Tips Screen
 
 Provides a random tip to help safeguard yourself from getting Skin Cancer.
-
-![Skin Cancer Tips Screen](./screenshots/skincancertips.png)
 
 ## Packages Used
 
