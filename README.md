@@ -20,28 +20,19 @@ while also determines if it's cancerous or not.
 
 ## Overview
 
-The app uses [HAM10000]() dataset for detecting Pigmented Skin Lesions from Harvard Dataverse and uses the pre-trained MobileNet model from Keras to create a model for the purpose of classification.
+The app uses the [HAM10000](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/DBW86T) dataset from Harvard Dataverse for detecting Pigmented Skin Lesions. 
 
-The model is converted from .h5 format to .tflite format and used in the Flutter app SkinDoc using tflite_flutter package.
+A pre-trained MobileNet model was fine-tuned using Keras to classify the images into 7 distinct categories. **The final model achieves a validation accuracy of 75.3%.**
 
-SkinDoc provides a way to click the image or upload it from the gallery, and then after preprocesssing the image, the image is fed to the model, which gives out the prediction.
+To deploy this on mobile, the model was converted from a `.h5` format to a `.tflite` format, enabling efficient, on-device inference in the Flutter app via the `tflite_flutter` package. 
 
-SkinDoc also provides random tips, to prevent from Skin Cancer, although it is hard coded, for now, but will be updated soon, to fetch random tips from the internet.
+SkinDoc allows users to capture or upload an image, preprocesses it, and feeds it to the edge model to output a prediction in real-time. It also provides random, hard-coded tips to help prevent skin cancer (with future updates planned to fetch dynamic tips).
 
 ## Features and Interfaces
 
 | Home Screen | Check Skin Lesion Screen | Result after Uploading Image | Skin Cancer Tips Screen |
-|-------------|--------------------------|------------------------------|-------------------------|
-| ![Home Screen](./screenshots/homescreen.png) | ![Check Lesion Screen Before Uploading Image](./screenshots/checkskinlesion.png) | ![Result](./screenshots/result.png) | ![Skin Cancer Tips Screen](./screenshots/skincancertips.png) |
-
-<style>
-    img {
-        height: 200px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
+| :---: | :---: | :---: | :---: |
+| <img src="./screenshots/homescreen.png" height="200" /> | <img src="./screenshots/checkskinlesion.png" height="200" /> | <img src="./screenshots/result.png" height="200" /> | <img src="./screenshots/skincancertips.png" height="200" /> |
 
 ### Home Screen
 
@@ -58,13 +49,16 @@ A single button to upload the image (whether it be clicking a picture or uploadi
 ### Result after Uploading Image
 
 Results display the classification of the Skin Lesion, as well as show if it could be Skin Cancer, with color coding:
-
-- Green: Negative
-- Red: Positive
+- 🟢 **Green:** Negative
+- 🔴 **Red:** Positive
 
 ### Skin Cancer Tips Screen
 
 Provides a random tip to help safeguard yourself from getting Skin Cancer.
+
+## Model Training
+
+The data preprocessing, exploratory data analysis, and model training pipeline can be found in the [ModellingSkinLesion.ipynb](./ModellingSkinLesion.ipynb) notebook included in this repository.
 
 ## Packages Used
 
